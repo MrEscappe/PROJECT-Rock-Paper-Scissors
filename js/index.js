@@ -1,62 +1,88 @@
-function playRound(playerChoice, computerChoice) {
+const choices = document.querySelectorAll(".choice");
+const resultText = document.querySelector(".result-text");
+const announceText = document.querySelector(".announce-text");
+const playerScore = document.querySelector(".player-score");
+const computerScore = document.querySelector(".computer-score");
+const resetBtn = document.querySelector(".restart");
+
+let playerPoints = 0;
+let computerPoints = 0;
+let isAlive = true;
+
+choices.forEach((choice) => {
+	choice.addEventListener("click", () => {
+		const playerChoice = choice.textContent;
+		const computerChoice = computerPlay();
+		const result = getResult(playerChoice, computerChoice);
+		updateScore(result);
+		updateResult(result, playerChoice, computerChoice);
+		checkGameOver();
+	});
+});
+
+function computerPlay() {
+	const choices = ["✊", "✋", "✌️"];
+	const randomIndex = Math.floor(Math.random() * choices.length);
+	return choices[randomIndex];
+}
+
+function getResult(playerChoice, computerChoice) {
+	if (!isAlive) return;
 	if (playerChoice === computerChoice) {
-		return "Tie!";
-	} else if (playerChoice === "rock" && computerChoice === "paper") {
-		return "You lose! Paper beats rock.";
-	} else if (playerChoice === "paper" && computerChoice === "rock") {
-		return "You win! Paper beats rock.";
-	} else if (playerChoice === "rock" && computerChoice === "scissors") {
-		return "You win! Rock beats scissors.";
-	} else if (playerChoice === "scissors" && computerChoice === "rock") {
-		return "You lose! Rock beats scissors.";
-	} else if (playerChoice === "paper" && computerChoice === "scissors") {
-		return "You lose! Scissors beats paper.";
-	} else if (playerChoice === "scissors" && computerChoice === "paper") {
-		return "You win! Scissors beats paper.";
+		return "draw";
+	} else if (
+		(playerChoice === "✊" && computerChoice === "✌️") ||
+		(playerChoice === "✋" && computerChoice === "✊") ||
+		(playerChoice === "✌️" && computerChoice === "✋")
+	) {
+		return "player";
 	} else {
-		return "Invalid input.";
+		return "computer";
 	}
 }
 
-function getComputerChoice() {
-	const choices = ["rock", "paper", "scissors"];
-	const randomNumber = Math.floor(Math.random() * 3);
-
-	return choices[randomNumber];
+function updateScore(result) {
+	if (!isAlive) return;
+	if (result === "player") {
+		playerPoints++;
+		playerScore.textContent = playerPoints;
+	} else if (result === "computer") {
+		computerPoints++;
+		computerScore.textContent = computerPoints;
+	}
 }
 
-function playGame() {
-	let playerScore = 0;
-	let computerScore = 0;
-
-	while (playerScore < 5 && computerScore < 5) {
-		const playerChoice = "rock";
-		const computerChoice = getComputerChoice();
-		const result = playRound(playerChoice, computerChoice);
-
-		if (result === "Invalid input.") {
-			console.log("Invalid input. Please enter rock, paper, or scissors.");
-			continue;
-		}
-
-		if (result.startsWith("You win!")) {
-			playerScore++;
-		} else if (result.startsWith("You lose!")) {
-			computerScore++;
-		}
-
-		console.log(`Player: ${playerChoice}`);
-		console.log(`Player Score: ${playerScore}`);
-		console.log(`Computer: ${computerChoice}`);
-		console.log(`Computer Score: ${computerScore}`);
-		console.log(result);
-	}
-
-	if (playerScore > computerScore) {
-		console.log("You win the game!");
+function updateResult(result, playerChoice, computerChoice) {
+	if (!isAlive) return;
+	if (result === "draw") {
+		resultText.textContent = "🤝";
+		announceText.textContent = "Draw! Try again!";
+	} else if (result === "player") {
+		resultText.textContent = playerChoice;
+		announceText.textContent = `You win! ${playerChoice} beats ${computerChoice}`;
 	} else {
-		console.log("You lose the game.");
+		resultText.textContent = computerChoice;
+		announceText.textContent = `You lose! ${computerChoice} beats ${playerChoice}`;
 	}
 }
 
-playGame();
+function checkGameOver() {
+	if (playerPoints === 5 || computerPoints === 5) {
+		isAlive = false;
+		if (playerPoints === 5) {
+			announceText.textContent = "You win the game!";
+		} else {
+			announceText.textContent = "You lose the game!";
+		}
+	}
+}
+
+resetBtn.addEventListener("click", () => {
+	playerPoints = 0;
+	computerPoints = 0;
+	playerScore.textContent = playerPoints;
+	computerScore.textContent = computerPoints;
+	resultText.textContent = "✊";
+	announceText.textContent = "Let's Play!";
+	isAlive = true;
+});
