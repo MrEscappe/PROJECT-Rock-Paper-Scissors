@@ -1,4 +1,5 @@
 const btns = document.querySelectorAll(".btn");
+const reset = document.querySelector(".btn-reset");
 const result = document.querySelector(".result");
 const playerScore = document.querySelector(".playerScore");
 const computerScore = document.querySelector(".computerScore");
@@ -13,6 +14,10 @@ btns.forEach((btn) => {
 			playRound(btn.textContent, getComputerChoice());
 		}
 	});
+});
+
+reset.addEventListener("click", () => {
+	resetGame();
 });
 
 function getComputerChoice() {
@@ -46,6 +51,15 @@ function winCheck() {
 		isOver = true;
 		result.textContent = `It's over! ${playerRound === 5 ? "Player" : "Computer"} Wins!`;
 	}
+}
+
+function resetGame() {
+	playerRound = 0;
+	result.textContent = "";
+	playerScore.textContent = "0";
+	computerScore.textContent = "0";
+	computerRound = 0;
+	isOver = false;
 }
 
 // function game() {
