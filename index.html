@@ -4,23 +4,59 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Rock Paper Scissors</title>
+		<link rel="stylesheet" href="/styles/style.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet" />
 	</head>
 	<body>
 		<main>
-			<div class="container">
+			<div class="container-start">
+				<p>Rock</p>
+				<p>X</p>
+				<p>Paper</p>
+				<p>X</p>
+				<p>Scissors</p>
+				<button class="btn-start">START</button>
+			</div>
+			<div class="container-game">
 				<div class="container-result">
 					<p class="result"></p>
-					<p class="playerScore">0</p>
-					<p class="computerScore">0</p>
+					<div class="text-choice">
+						<p>Player</p>
+						<p>Computer</p>
+					</div>
+					<div class="container-choice">
+						<div class="player-choice">
+							<p>ROCK</p>
+						</div>
+						<div class="computer-choice">
+							<p>PAPER</p>
+						</div>
+					</div>
+					<div class="container-score">
+						<p class="playerScore">0</p>
+						<p class="computerScore">0</p>
+					</div>
 				</div>
 				<div class="container-btn">
 					<button class="btn btn-rock">Rock</button>
 					<button class="btn btn-paper">Paper</button>
 					<button class="btn btn-scissors">Scissors</button>
-					<button class="btn-reset">Reset</button>
 				</div>
 			</div>
+			<div class="container-end">
+				<p class="result result-end"></p>
+				<button class="btn btn-reset">Reset</button>
+			</div>
 		</main>
-		<script src="script.js"></script>
+		<footer>
+			<p class="footer-text">
+				Made with ❤️ by
+				<a href="https://github.com/MrEscappe">José Sérgio</a>
+			</p>
+		</footer>
+
+		<script src="./script/script.js"></script>
 	</body>
 </html>

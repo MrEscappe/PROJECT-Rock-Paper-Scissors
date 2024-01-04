@@ -1,0 +1,192 @@
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+/*
+    Typographic tweaks!
+    2. Add accessible line-height
+    3. Improve text rendering
+  */
+body {
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+	background-color: #070a0e;
+	color: #ebedef;
+	margin: 0 auto;
+	width: 100vh;
+}
+
+main {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.container-start {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	margin: 0 auto;
+	padding-top: 100px;
+}
+
+.container-start p {
+	font-family: "Monoton", sans-serif;
+	font-size: 80px;
+	margin: 0;
+}
+
+.container-start > p:nth-child(1) {
+	padding-right: 200px;
+}
+
+.container-start > p:nth-child(3) {
+	padding-left: 200px;
+}
+
+.container-start > p:nth-child(4) {
+	padding-left: 250px;
+}
+
+.container-start > p:nth-child(5) {
+	padding-left: 450px;
+}
+
+.btn-start {
+	cursor: pointer;
+	border: 1px #ebedef solid;
+	color: #ebedef;
+	background-color: transparent;
+	padding: 15px 50px;
+	margin-top: 50px;
+	font-size: 30px;
+	font-family: "Monoton", sans-serif;
+}
+
+.container-start {
+	display: flex;
+}
+
+/* Game page */
+
+.container-result {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.result {
+	text-align: center;
+	font-size: 30px;
+	margin-bottom: 40px;
+	padding-right: 30px;
+	font-family: "Monoton", sans-serif;
+}
+
+.text-choice {
+	display: flex;
+	gap: 270px;
+	font-size: 25px;
+	font-family: "Monoton", sans-serif;
+	margin-bottom: 10px;
+}
+
+.container-score {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 400px;
+	margin: 0;
+	margin-top: 30px;
+	font-size: 30px;
+}
+
+.container-choice {
+	display: flex;
+	gap: 50px;
+}
+
+.player-choice,
+.computer-choice {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 40px;
+	width: 350px;
+	height: 350px;
+	box-shadow: inset 0px 0px 22px 2px rgba(0, 0, 0, 0.57);
+	border-radius: 10px;
+	font-family: "Monoton", sans-serif;
+}
+
+.container-game {
+	display: none;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	margin: 0 auto;
+	height: 90vh;
+}
+
+.container-btn {
+	display: flex;
+	gap: 10px;
+}
+
+.btn {
+	cursor: pointer;
+	border: 1px #ebedef solid;
+	color: #ebedef;
+	background-color: transparent;
+	padding: 15px 50px;
+	margin-top: 50px;
+	font-size: 30px;
+	font-family: "Monoton", sans-serif;
+	width: auto;
+	overflow: hidden;
+}
+
+/* Last Page */
+
+.container-end {
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100vh;
+	height: 90vh;
+}
+
+.result-end {
+	padding: 0;
+	font-size: 100px;
+}
+
+footer {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	align-items: center;
+}
+
+footer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	margin-top: 20px;
+}
+
+footer a {
+	color: #ebedef;
+	text-decoration: none;
+	font-weight: 900;
+}
