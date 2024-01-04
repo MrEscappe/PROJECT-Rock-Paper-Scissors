@@ -9,3 +9,5 @@ This project is a simple game of Rock Paper Scissors. It is a project from The O
 - JavaScript
 
 ### Live Demo
+
+[Rock Paper Scissors](https://mrescappe.github.io/PROJECT-Rock-Paper-Scissors/)
